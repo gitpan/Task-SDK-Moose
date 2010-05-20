@@ -19,7 +19,7 @@
 #     NAME => q[Task::SDK::Moose]
 #     NO_META => q[1]
 #     PREREQ_PM => { DateTime=>q[0], DateTime::Format::MySQL=>q[0], Test::LeakTrace=>q[0], Test::Spelling=>q[0], DBM::Deep=>q[0], Sub::Exporter=>q[0.980], DateTime::Calendar::Mayan=>q[0], HTTP::Headers=>q[0], List::MoreUtils=>q[0.12], Try::Tiny=>q[0.02], Module::Refresh=>q[0], ExtUtils::MakeMaker=>q[6.42], Sub::Name=>q[0], Data::OptList=>q[0], Module::Install=>q[0], Module::Info=>q[0], Test::Inline=>q[0], Algorithm::C3=>q[0], Params::Coerce=>q[0], Scalar::Util=>q[1.19], Class::MOP=>q[1.01], Module::Install::AuthorRequires=>q[0], Test::Pod=>q[0], Regexp::Common=>q[0], Test::Output=>q[0], Task::Weaken=>q[0], File::Find::Rule=>q[0], Test::Pod::Coverage=>q[0], URI=>q[0], IO::String=>q[0], Locale::US=>q[0], Module::Install::ExtraTests=>q[0], SUPER=>q[0], Test::NoTabs=>q[0], Declare::Constraints::Simple=>q[0] }
-#     VERSION => q[0.02]
+#     VERSION => q[0.03]
 #     VERSION_FROM => q[lib/Task/SDK/Moose.pm]
 #     dist => { PREOP=>q[$(PERL) -I. "-MModule::Install::Admin" -e "dist_preop(q($(DISTVNAME)))"] }
 #     realclean => { FILES=>q[MYMETA.yml] }
@@ -61,11 +61,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = Task::SDK::Moose
 NAME_SYM = Task_SDK_Moose
-VERSION = 0.02
+VERSION = 0.03
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_02
+VERSION_SYM = 0_03
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.02
+XS_VERSION = 0.03
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -257,7 +257,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Task-SDK-Moose
-DISTVNAME = Task-SDK-Moose-0.02
+DISTVNAME = Task-SDK-Moose-0.03
 
 
 # --- MakeMaker macro section:
@@ -766,7 +766,7 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0.02">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0.03">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>A List of Modules required to Author Moose</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Chris Prather  C&lt;&lt; &lt;chris@prather.org&gt; &gt;&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
