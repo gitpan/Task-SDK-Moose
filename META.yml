@@ -7,7 +7,7 @@ build_requires:
 configure_requires:
   ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: 'Module::Install version 0.95'
+generated_by: 'Module::Install version 0.97'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -18,18 +18,41 @@ no_index:
     - inc
     - t
 requires:
+  Algorithm::C3: 0
+  Class::MOP: 1.01
+  DBM::Deep: 0
+  Data::OptList: 0
+  DateTime: 0
+  DateTime::Calendar::Mayan: 0
+  DateTime::Format::MySQL: 0
+  Declare::Constraints::Simple: 0
   File::Find::Rule: 0
+  HTTP::Headers: 0
+  IO::String: 0
+  List::MoreUtils: 0.12
+  Locale::US: 0
   Module::Info: 0
   Module::Install: 0
   Module::Install::AuthorRequires: 0
   Module::Install::ExtraTests: 0
+  Module::Refresh: 0
+  Params::Coerce: 0
+  Regexp::Common: 0
+  SUPER: 0
+  Scalar::Util: 1.19
+  Sub::Exporter: 0.980
+  Sub::Name: 0
+  Task::Weaken: 0
   Test::Inline: 0
+  Test::LeakTrace: 0
   Test::NoTabs: 0
   Test::Output: 0
   Test::Pod: 0
   Test::Pod::Coverage: 0
   Test::Spelling: 0
+  Try::Tiny: 0.02
+  URI: 0
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/perigrin/Task-SDK-Moose.git
-version: 0.01
+version: 0.02

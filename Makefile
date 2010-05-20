@@ -14,13 +14,13 @@
 #     ABSTRACT => q[A List of Modules required to Author Moose]
 #     AUTHOR => q[Chris Prather  C<< <chris@prather.org> >>]
 #     BUILD_REQUIRES => { ExtUtils::MakeMaker=>q[6.42] }
-#     DIR => []
 #     DISTNAME => q[Task-SDK-Moose]
 #     LICENSE => q[perl]
 #     NAME => q[Task::SDK::Moose]
 #     NO_META => q[1]
-#     PREREQ_PM => { File::Find::Rule=>q[0], Test::Pod::Coverage=>q[0], Test::Spelling=>q[0], ExtUtils::MakeMaker=>q[6.42], Module::Install=>q[0], Module::Install::AuthorRequires=>q[0], Test::Pod=>q[0], Module::Install::ExtraTests=>q[0], Module::Info=>q[0], Test::Inline=>q[0], Test::Output=>q[0], Test::NoTabs=>q[0] }
-#     VERSION => q[0.01]
+#     PREREQ_PM => { DateTime=>q[0], DateTime::Format::MySQL=>q[0], Test::LeakTrace=>q[0], Test::Spelling=>q[0], DBM::Deep=>q[0], Sub::Exporter=>q[0.980], DateTime::Calendar::Mayan=>q[0], HTTP::Headers=>q[0], List::MoreUtils=>q[0.12], Try::Tiny=>q[0.02], Module::Refresh=>q[0], ExtUtils::MakeMaker=>q[6.42], Sub::Name=>q[0], Data::OptList=>q[0], Module::Install=>q[0], Module::Info=>q[0], Test::Inline=>q[0], Algorithm::C3=>q[0], Params::Coerce=>q[0], Scalar::Util=>q[1.19], Class::MOP=>q[1.01], Module::Install::AuthorRequires=>q[0], Test::Pod=>q[0], Regexp::Common=>q[0], Test::Output=>q[0], Task::Weaken=>q[0], File::Find::Rule=>q[0], Test::Pod::Coverage=>q[0], URI=>q[0], IO::String=>q[0], Locale::US=>q[0], Module::Install::ExtraTests=>q[0], SUPER=>q[0], Test::NoTabs=>q[0], Declare::Constraints::Simple=>q[0] }
+#     VERSION => q[0.02]
+#     VERSION_FROM => q[lib/Task/SDK/Moose.pm]
 #     dist => { PREOP=>q[$(PERL) -I. "-MModule::Install::Admin" -e "dist_preop(q($(DISTVNAME)))"] }
 #     realclean => { FILES=>q[MYMETA.yml] }
 
@@ -61,11 +61,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = Task::SDK::Moose
 NAME_SYM = Task_SDK_Moose
-VERSION = 0.01
+VERSION = 0.02
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_01
+VERSION_SYM = 0_02
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.01
+XS_VERSION = 0.02
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -151,7 +151,7 @@ FULLEXT = Task/SDK/Moose
 BASEEXT = Moose
 PARENT_NAME = Task::SDK
 DLBASE = $(BASEEXT)
-VERSION_FROM = 
+VERSION_FROM = lib/Task/SDK/Moose.pm
 OBJECT = 
 LDFROM = $(OBJECT)
 LINKTYPE = dynamic
@@ -257,7 +257,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = Task-SDK-Moose
-DISTVNAME = Task-SDK-Moose-0.01
+DISTVNAME = Task-SDK-Moose-0.02
 
 
 # --- MakeMaker macro section:
@@ -766,21 +766,44 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0.01">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0.02">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>A List of Modules required to Author Moose</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Chris Prather  C&lt;&lt; &lt;chris@prather.org&gt; &gt;&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Algorithm::C3" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Class::MOP" VERSION="1.01" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="DBM::Deep" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Data::OptList" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="DateTime::" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="DateTime::Calendar::Mayan" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="DateTime::Format::MySQL" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Declare::Constraints::Simple" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="File::Find::Rule" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="HTTP::Headers" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="IO::String" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="List::MoreUtils" VERSION="0.12" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Locale::US" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Module::Info" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Module::Install" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Module::Install::AuthorRequires" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Module::Install::ExtraTests" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Module::Refresh" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Params::Coerce" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Regexp::Common" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="SUPER::" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Scalar::Util" VERSION="1.19" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Sub::Exporter" VERSION="0.98" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Sub::Name" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Task::Weaken" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Test::Inline" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Test::LeakTrace" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Test::NoTabs" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Test::Output" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Test::Pod" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Test::Pod::Coverage" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Test::Spelling" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Try::Tiny" VERSION="0.02" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="URI::" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="darwin-2level-5.12" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> $(DISTNAME).ppd
@@ -802,7 +825,7 @@ pm_to_blib : $(FIRST_MAKEFILE) $(TO_INST_PM)
 
 
 # End.
-# Postamble by Module::Install 0.95
+# Postamble by Module::Install 0.97
 # --- Module::Install::Admin::Makefile section:
 
 realclean purge ::
